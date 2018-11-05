@@ -1,0 +1,25 @@
+{
+    "extends": "airbnb-base",
+    "parserOptions": {
+        "ecmaVersion": 8,
+        "sourceType": "script",
+        "ecmaFeatures": {
+            "modules": false
+        }
+    },
+    "rules": {
+        "consistent-return": 0,
+        "no-console": 1,
+        "no-param-reassign": 0,
+        "strict": [2, "global"],
+        "linebreak-style": [2, "windows"]
+    },
+    "overrides": {
+        "files": "*.test.js",
+        "rules": {
+            "no-unused-vars": 0,
+            "no-undef": 0,
+            "padded-blocks": 0
+        }
+    }
+}
