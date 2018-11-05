@@ -45,4 +45,30 @@ module.exports = (server) => {
       return next(new errors.InternalError(err.message));
     }
   });
+
+  server.put('/customers/:id', async (req, res, next) => {
+    if (!req.is('application/json')) {
+      return next(new errors.InvalidContentError("Expects 'application/json'"));
+    }
+
+    try {
+      // eslint-disable-next-line no-unused-vars
+      const customer = await Customer.findOneAndUpdate({ _id: req.params.id }, req.body);
+      res.send(200);
+      next();
+    } catch (err) {
+      return next(new errors.ResourceNotFoundError(`There is no customer with the id of ${req.params.id}`));
+    }
+  });
+
+  server.del('/customers/:id', async (req, res, next) => {
+    try {
+      // eslint-disable-next-line no-unused-vars
+      const customer = await Customer.findOneAndRemove({ _id: req.params.id });
+      res.send(204);
+      next();
+    } catch (err) {
+      return next(new errors.ResourceNotFoundError(`There is no customer with the id of ${req.params.id}`));
+    }
+  });
 };
