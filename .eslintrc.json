@@ -12,7 +12,8 @@
         "no-console": 1,
         "no-param-reassign": 0,
         "strict": [2, "global"],
-        "linebreak-style": [2, "windows"]
+        "linebreak-style": [2, "windows"],
+        "no-shadow": 0
     },
     "overrides": {
         "files": "*.test.js",
