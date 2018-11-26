@@ -19,5 +19,6 @@ db.on('error', err => console.log(err));
 
 db.once('open', () => {
   require('./routes/customers')(server); // eslint-disable-line global-require
+  require('./routes/users')(server); // eslint-disable-line global-require
   console.log(`Server started on port ${config.PORT}`);
 });
