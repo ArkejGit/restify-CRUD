@@ -18,10 +18,11 @@ server.listen(config.PORT, () => {
 
 const db = mongoose.connection;
 
-db.on('error', err => console.log(err));
+db.on('error', (err) => {
+  throw err;
+});
 
 db.once('open', () => {
   require('./routes/customers')(server); // eslint-disable-line global-require
   require('./routes/users')(server); // eslint-disable-line global-require
-  console.log(`Server started on port ${config.PORT}`);
 });
